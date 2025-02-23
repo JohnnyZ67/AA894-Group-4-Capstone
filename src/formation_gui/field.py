@@ -24,7 +24,7 @@ class Field:
         self.ax.scatter(play.x, play.y, c='red', s=15)
         self.ax.set_title(f"Formation: {play.offenseFormation.unique()[0]}")
 
-    def zoomed_formation(self, play: pd.DataFrame):
+    def zoomed_formation(self, play: pd.DataFrame, title_suffix: str = ""):
         fig, ax = plt.subplots(1, figsize=(5,5))
 
         ax.set_xlim(-25, 25)
@@ -45,7 +45,8 @@ class Field:
         
         ax.scatter(centered_play.x, centered_play.y, c=['red'], s=25)
         ax.plot([0, 0], [-25, 25], color='white', linestyle='-', linewidth=.5)
-        ax.set_title(f"Formation: {centered_play.offenseFormation.unique()[0]}")
+        ax.set_title(f"Formation: {centered_play.offenseFormation.unique()[0]}{title_suffix}")
+
         return fig
     
     def flip_formation(self, play: pd.DataFrame):
